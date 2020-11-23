@@ -5,9 +5,10 @@ import { isUserInTheVoiceChannel, isMusicPlaying, isSameVoiceChannel } from "../
 import { createEmbed } from "../utils/createEmbed";
 
 @DefineCommand({
-    name: "skip",
-    description: "Skip the current track",
-    usage: "{prefix}skip"
+    aliases: ["atla", "a", "dc", "skip", "geç", "g"],
+    name: "geç",
+    description: "Geçerli parçayı atla",
+    usage: "{prefix}geç"
 })
 export class SkipCommand extends BaseCommand {
     @isUserInTheVoiceChannel()
@@ -21,7 +22,7 @@ export class SkipCommand extends BaseCommand {
         const song = message.guild?.queue?.songs.first();
 
         message.channel.send(
-            createEmbed("info", `⏭  **|**  Skipped **[${message.guild?.queue!.songs.first()?.title as string}](${message.guild?.queue!.songs.first()?.url as string})**`)
+            createEmbed("info", `⏭  **|**  Geçildi **[${message.guild?.queue!.songs.first()?.title as string}](${message.guild?.queue!.songs.first()?.url as string})**`)
                 .setThumbnail(song?.thumbnail as string)
         )
             .catch(e => this.client.logger.error("SKIP_CMD_ERR:", e));
