@@ -18,29 +18,29 @@ export class AboutCommand extends BaseCommand {
         message.channel.send(
             createEmbed("info", `
 \`\`\`asciidoc
-Users count         :: ${await this.client.getUsersCount()}
-Channels count      :: ${await this.client.getChannelsCount()}
-Guilds count        :: ${await this.client.getGuildsCount()}
-Shards count        :: ${this.client.shard ? `${this.client.shard.count}` : "N/A"}
-Shard ID            :: ${this.client.shard ? `${this.client.shard.ids[0]}` : "N/A"}
-Playing music on    :: ${await this.client.getTotalPlaying()} guilds
+Kullanıcı sayısı    :: ${await this.client.getUsersCount()}
+Kanal sayısı        :: ${await this.client.getChannelsCount()}
+Sunucu sayısı       :: ${await this.client.getGuildsCount()}
+Parçaların sayısı   :: ${this.client.shard ? `${this.client.shard.count}` : "N/A"}
+Parça Kimliği       :: ${this.client.shard ? `${this.client.shard.ids[0]}` : "N/A"}
+Müzik çalma         :: ${await this.client.getTotalPlaying()} guilds
 
 Platform            :: ${process.platform}
 Arch                :: ${process.arch}
 Memory              :: ${this.bytesToSize(await this.client.getTotalMemory("rss"))}
-OS uptime           :: ${formatMS(osUptime() * 1000)}
-Process uptime      :: ${formatMS(process.uptime() * 1000)}
-Bot uptime          :: ${formatMS(this.client.uptime!)}
+OS çalışma süresi   :: ${formatMS(osUptime() * 1000)}
+Süreç çalışma süresi:: ${formatMS(process.uptime() * 1000)}
+Bot çalışma süresi  :: ${formatMS(this.client.uptime!)}
 
-Node.JS version     :: ${process.version}
-Discord.JS version  :: v${version}
-Bot version         :: v${(await import(path.join(process.cwd(), "package.json"))).version}
+Node.JS versiyonu   :: ${process.version}
+Discord.JS versiyonu:: v${version}
+Bot versiyonu       :: v${(await import(path.join(process.cwd(), "package.json"))).version}
 
-Source code         :: https://github.com/zhycorp/disc-11
-Get a support       :: https://zhycorp.com/discord
+Kaynak Kodu         :: https://github.com/TyphaonTyphon/my-template.git
+Destek İçin         :: https://zhycorp.com/discord
 \`\`\`
         `)
-                .setAuthor(`${this.client.user?.username as string} - A simple open-sourced Discord music bot`)
+                .setAuthor(`${this.client.user?.username as string} - Basit bir açık kaynaklı Discord müzik botu`)
         ).catch(e => this.client.logger.error("ABOUT_CMD_ERR:", e));
     }
 
