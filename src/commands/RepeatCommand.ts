@@ -8,7 +8,7 @@ import { createEmbed } from "../utils/createEmbed";
     aliases: ["loop", "music-repeat", "music-loop", "tekrar", "l", "t"],
     name: "tekrar",
     description: "Mevcut parçayı veya kuyruğu tekrarla",
-    usage: "{prefix}repeat <all | one | disable>"
+    usage: "{prefix}repeat <hepsi | tek | kapat>"
 })
 export class RepeatCommand extends BaseCommand {
     @isUserInTheVoiceChannel()
