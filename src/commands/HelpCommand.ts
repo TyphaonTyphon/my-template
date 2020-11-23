@@ -17,12 +17,12 @@ export class HelpCommand extends BaseCommand {
         if (command && !command.meta.disable) {
             message.channel.send(
                 new MessageEmbed()
-                    .setTitle(`Information for ${command.meta.name} command`)
+                    .setTitle(`${command.meta.name} komutu için bilgi`)
                     .setThumbnail("https://hzmi.xyz/assets/images/question_mark.png")
-                    .addFields({ name: "Name", value: `\`${command.meta.name}\``, inline: true },
-                        { name: "Description", value: command.meta.description, inline: true },
-                        { name: "Aliases", value: `${Number(command.meta.aliases?.length) > 0 ? command.meta.aliases?.map(c => `\`${c}\``).join(", ") as string : "None."}`, inline: false },
-                        { name: "Usage", value: `\`${command.meta.usage?.replace(/{prefix}/g, message.client.config.prefix) as string}\``, inline: true })
+                    .addFields({ name: "Adı", value: `\`${command.meta.name}\``, inline: true },
+                        { name: "Yorum", value: command.meta.description, inline: true },
+                        { name: "Takma adlar", value: `${Number(command.meta.aliases?.length) > 0 ? command.meta.aliases?.map(c => `\`${c}\``).join(", ") as string : "None."}`, inline: false },
+                        { name: "Kullanım", value: `\`${command.meta.usage?.replace(/{prefix}/g, message.client.config.prefix) as string}\``, inline: true })
                     .setColor(this.client.config.embedColor)
                     .setTimestamp()
             ).catch(e => this.client.logger.error("HELP_CMD_ERR:", e));
