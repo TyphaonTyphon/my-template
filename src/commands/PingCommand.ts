@@ -6,24 +6,24 @@ import { DefineCommand } from "../utils/decorators/DefineCommand";
 @DefineCommand({
     aliases: ["pong", "pang", "pung", "peng", "pingpong"],
     name: "ping",
-    description: "Shows the current ping of the bot",
+    description: "Botun mevcut pingini gösterir",
     usage: "{prefix}ping"
 })
 export class PingCommand extends BaseCommand {
     public execute(message: IMessage): IMessage {
         const before = Date.now();
-        message.channel.send("*🏓 Pinging...*").then((msg: IMessage | any) => {
+        message.channel.send("*🏓 Ping atma...*").then((msg: IMessage | any) => {
             const latency = Date.now() - before;
             const wsLatency = this.client.ws.ping.toFixed(0);
             const embed = new MessageEmbed()
                 .setAuthor("🏓 PONG!", message.client.user?.displayAvatarURL())
                 .setColor(this.searchHex(wsLatency))
                 .addFields({
-                    name: "API Latency",
+                    name: "API Gecikmesi",
                     value: `**\`${latency}\`** ms`,
                     inline: true
                 }, {
-                    name: "WebSocket Latency",
+                    name: "WebSocket Gecikmesi",
                     value: `**\`${wsLatency}\`** ms`,
                     inline: true
                 })
