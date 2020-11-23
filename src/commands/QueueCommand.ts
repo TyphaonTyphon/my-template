@@ -5,16 +5,16 @@ import { isMusicPlaying } from "../utils/decorators/MusicHelper";
 import { createEmbed } from "../utils/createEmbed";
 
 @DefineCommand({
-    aliases: ["q", "queue-list", "track-list"],
-    name: "queue",
-    description: "Show the current track queue",
-    usage: "{prefix}queue"
+    aliases: ["q", "queue-list", "track-list", "kuyruk", "k", "kuyruk-listesi"],
+    name: "kuyruk",
+    description: "Mevcut parça kuyruğunu gösterir.",
+    usage: "{prefix}kuyruk"
 })
 export class QueueCommand extends BaseCommand {
     @isMusicPlaying()
     public execute(message: IMessage): any {
         const embed = createEmbed("info")
-            .setTitle("**Song Queue**");
+            .setTitle("**Şarkı Kuyruğu**");
 
         let num = 1;
         const songs = message.guild?.queue?.songs.map(s => `**${num++}.** **[${s.title}](${s.url})**`);
