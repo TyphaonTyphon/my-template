@@ -5,10 +5,10 @@ import { DefineCommand } from "../utils/decorators/DefineCommand";
 import { createEmbed } from "../utils/createEmbed";
 
 @DefineCommand({
-    aliases: ["h", "command", "commands", "cmd", "cmds"],
-    name: "help",
-    description: "Shows the help menu or command list",
-    usage: "{prefix}help [command]"
+    aliases: ["h", "command", "commands", "cmd", "cmds", "y", "yardım"],
+    name: "yardım",
+    description: "Yardım menüsünü veya komut listesini gösterir",
+    usage: "{prefix}yardım [komut]"
 })
 export class HelpCommand extends BaseCommand {
     public execute(message: IMessage, args: string[]): void {
