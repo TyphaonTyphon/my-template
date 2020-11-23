@@ -5,9 +5,10 @@ import { isUserInTheVoiceChannel, isMusicPlaying, isSameVoiceChannel } from "../
 import { createEmbed } from "../utils/createEmbed";
 
 @DefineCommand({
-    name: "pause",
-    description: "Pause the track",
-    usage: "{prefix}pause"
+    aliases: ["pause", "b", "durdur", "bekle"],
+    name: "durdur",
+    description: "Parçayı durdur",
+    usage: "{prefix}bekle"
 })
 export class PauseCommand extends BaseCommand {
     @isUserInTheVoiceChannel()
