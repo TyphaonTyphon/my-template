@@ -5,9 +5,9 @@ import { isUserInTheVoiceChannel, isMusicPlaying, isSameVoiceChannel } from "../
 import { createEmbed } from "../utils/createEmbed";
 
 @DefineCommand({
-    aliases: ["loop", "music-repeat", "music-loop"],
-    name: "repeat",
-    description: "Repeat the current track or queue",
+    aliases: ["loop", "music-repeat", "music-loop", "tekrar", "l", "t"],
+    name: "tekrar",
+    description: "Mevcut parçayı veya kuyruğu tekrarla",
     usage: "{prefix}repeat <all | one | disable>"
 })
 export class RepeatCommand extends BaseCommand {
@@ -16,15 +16,15 @@ export class RepeatCommand extends BaseCommand {
     @isSameVoiceChannel()
     public execute(message: IMessage, args: string[]): any {
         const mode = args[0];
-        if (mode === "all" || mode === "queue" || mode === "*" || mode === "2") {
+        if (mode === "hepsi" || mode === "kuyruk" || mode === "*" || mode === "2") {
             message.guild!.queue!.loopMode = 2;
-            return message.channel.send(createEmbed("info", "🔁  **|**  Repeating all music in the queue"));
-        } else if (mode === "current" || mode === "one" || mode === "musiconly" || mode === "1") {
+            return message.channel.send(createEmbed("info", "🔁  **|**  Kuyruktaki tüm müziği tekrarlayacak."));
+        } else if (mode === "bu" || mode === "tek" || mode === "." || mode === "1") {
             message.guild!.queue!.loopMode = 1;
-            return message.channel.send(createEmbed("info", "🔂  **|**  Repeating this music only"));
-        } else if (mode === "disable" || mode === "off" || mode === "0") {
+            return message.channel.send(createEmbed("info", "🔂  **|**  Sadece bu müziği tekrarlayacak."));
+        } else if (mode === "kapat" || mode === "kapalı" || mode === "0") {
             message.guild!.queue!.loopMode = 0;
-            return message.channel.send(createEmbed("info", "▶  **|**  Repeating disabled"));
+            return message.channel.send(createEmbed("info", "▶  **|**  Tekrarlama devre dışı."));
         }
         message.channel.send(`Invalid value, see **\`${this.client.config.prefix}help ${this.meta.name}\`** for more information!`).catch(e => this.client.logger.error("REPEAT_CMD_ERR:", e));
     }
